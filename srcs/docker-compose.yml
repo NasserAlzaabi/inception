@@ -1,7 +1,7 @@
 services:
   mariadb:
-    container_name: mariadb-container
-    image: mariadb-image
+    container_name: mariadb
+    image: mariadb
     build:
       context: ./requirements/mariadb/.
       dockerfile: Dockerfile
@@ -13,8 +13,8 @@ services:
       - mariadb_data:/var/lib/mysql
   
   wordpress:
-    container_name: wp-container
-    image: wp-image
+    container_name: wordpress
+    image: wordpress
     build:
       context: ./requirements/wordpress/.
       dockerfile: Dockerfile
@@ -27,8 +27,8 @@ services:
     volumes:
       - wp_files:/var/www/html/wordpress
   nginx:
-    container_name: nginx-container
-    image: nginx-image
+    container_name: nginx
+    image: nginx
     build:
       context: ./requirements/nginx/.
       dockerfile: Dockerfile
