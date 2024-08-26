@@ -3,8 +3,8 @@ MARIADB_DATA="/home/naalzaab/data/mariadb_data"
 WP_FILES="/home/naalzaab/data/wp_files"
 
 up: key-generate
+	mkdir -p $(MARIADB_DATA) $(WP_FILES)
 	$(COMPOSE) -f docker-compose.yml up --build -d
-# mkdir -p $(MARIADB_DATA) $(WP_FILES) && \
 
 down:
 	$(COMPOSE) -f docker-compose.yml down
@@ -15,6 +15,7 @@ re: down up
 fclean: down
 	@yes | docker system prune --all
 	@docker volume rm $$(docker volume ls -q)
+	@sudo rm -rf $(MARIADB_DATA) $(WP_FILES)
 # docker stop $(docker ps -aq); docker rm $(docker ps -qa); docker rmi $(docker images -aq); docker volume rm $(docker volume ls -q); docker network rm $(docker network ls -q) 2>/dev/null
 
 nginx-down:
