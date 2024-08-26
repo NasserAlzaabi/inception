@@ -16,7 +16,7 @@ RUN mkdir -p /var/www/html/wordpress
 COPY ./conf/www.conf /etc/php81/php-fpm.d/
 
 # downloading wp-cli executable
-# then later we will use this command to download the actual wordpress files
+# then later we will use this command to download the wordpress files
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/bin/wp

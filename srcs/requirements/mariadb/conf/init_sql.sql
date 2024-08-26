@@ -20,7 +20,8 @@ GRANT ALL PRIVILEGES ON `$MARIADB_DATABASE`.* TO '$MARIADB_USER'@'%';
 FLUSH PRIVILEGES;
 
 -- SQL commands
-/* 
-    1. SHOW DATABASES;
-    2. SELECT user FROM mysql.user;
- */
+    -- 1. mysql
+    -- 2. show databases;  # to go inside mariadb to see all dbs
+    -- 3. use our_db;      # to go inside our desired db
+    -- 4. show tables;     # to see all tables inside our desired db
+    -- 5, select * wp_users;  # see all wp users
