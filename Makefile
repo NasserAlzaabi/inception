@@ -3,8 +3,8 @@ MARIADB_DATA="/home/naalzaab/data/mariadb_data"
 WP_FILES="/home/naalzaab/data/wp_files"
 
 up: key-generate
-	mkdir -p $(MARIADB_DATA) $(WP_FILES) && \
 	$(COMPOSE) -f docker-compose.yml up --build -d
+# mkdir -p $(MARIADB_DATA) $(WP_FILES) && \
 
 down:
 	$(COMPOSE) -f docker-compose.yml down
