@@ -1,0 +1,53 @@
+services:
+  mariadb:
+    container_name: mariadb-container
+    image: mariadb-image
+    build:
+      context: ./requirements/mariadb/.
+      dockerfile: Dockerfile
+    restart: on-failure
+    networks:
+      - inception
+    env_file: .env
+    volumes:
+      - mariadb_data:/var/lib/mysql
+  
+  wordpress:
+    container_name: wp-container
+    image: wp-image
+    build:
+      context: ./requirements/wordpress/.
+      dockerfile: Dockerfile
+    restart: on-failure
+    networks:
+      - inception
+    env_file: ./.env
+    depends_on:
+      - mariadb
+    volumes:
+      - wp_files:/var/www/html/wordpress
+  nginx:
+    container_name: nginx-container
+    image: nginx-image
+    build:
+      context: ./requirements/nginx/.
+      dockerfile: Dockerfile
+    ports:
+      - 443:443
+    restart: on-failure
+    networks:
+      - inception
+    env_file: ./.env
+    depends_on:
+      - wordpress
+    volumes:
+      - wp_files:/var/www/html/wordpress
+      - ../secrets:/etc/nginx/certs
+networks:
+  inception:
+    name: inception
+    driver: bridge
+
+volumes:
+  mariadb_data:
+  wp_files:
