@@ -20,7 +20,5 @@ GRANT ALL PRIVILEGES ON `$MARIADB_DATABASE`.* TO '$MARIADB_USER'@'%';
 FLUSH PRIVILEGES;
 
 -- SQL commands
-/* 
-    1. SHOW DATABASES;
-    2. SELECT user FROM mysql.user;
- */
+    -- SHOW DATABASES;
+    -- SELECT user FROM mysql.user;

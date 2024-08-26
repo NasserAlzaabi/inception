@@ -10,8 +10,7 @@ RUN mkdir -p /etc/nginx /run/nginx /usr/share/nginx/html /etc/nginx/certs
 # copy the custom conf file
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
-# expose port for other container
-# EXPOSE 80
+# open port for other containers (or web) to access
 EXPOSE 443
 
 # changing ownership of these directory to the nginx user

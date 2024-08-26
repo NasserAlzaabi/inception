@@ -50,4 +50,16 @@ networks:
 
 volumes:
   mariadb_data:
+    name: mariadb_data
+    driver: local
+    driver_opts:
+      device: /home/naalzaab/data/mariadb_data
+      o: bind
+      type: none
   wp_files:
+    name: wp_files
+    driver: local
+    driver_opts:
+      device: /home/naalzaab/data/wp_files
+      o: bind
+      type: none
